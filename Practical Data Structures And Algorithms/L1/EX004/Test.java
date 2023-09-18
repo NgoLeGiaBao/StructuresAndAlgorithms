@@ -1,21 +1,17 @@
 public class Test {
-    public static void main (String [] args) {
-        MyDoubleLinkedList mdll = new MyDoubleLinkedList();
-        mdll.addFirst(2);
-        mdll.addLast(1);
-        mdll.addAfter (mdll.getHead(), 3);
-        mdll.addFirst(8);
-        mdll.addLast(4);
-        mdll.print();
-        mdll.removeFirst();
-        mdll.removeLast();
-        mdll.removeAfter(mdll.getHead());
-        mdll.print();
-        System.out.println ("Size of my double linked list is: " + mdll.size());
-        System.out.println ("Double linked list contains 1: " + mdll.contains(1));
-        System.out.println ("Double linked list contains 3: " + mdll.contains(3));
-        System.out.println ("Double linked list is empty: " + mdll.isEmpty());
-        System.out.println ("First element in double linked list is: " + mdll.getFirst());
-
+    public static void main (String [] args){
+        MyDoubleNode mdn = new MyDoubleNode ();
+        mdn.addFirst (3);
+        mdn.addFirst (1);
+        mdn.addFirst (5);
+        mdn.addLast (9);
+        // mdn.addAfter (mdn.getHead(), 10);
+        mdn.print();
+        // System.out.println (mdn.size());
+        // System.out.println (mdn.removeFirst());
+        // System.out.println (mdn.removeLast());
+        // System.out.println (mdn.size());
+        System.out.println(mdn.removeAfter (mdn.getHead()));
+        mdn.print();
     }
 }

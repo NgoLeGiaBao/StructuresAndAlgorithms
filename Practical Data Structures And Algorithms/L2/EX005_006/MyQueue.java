@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 public class MyQueue<E> implements QueueInterface<E> {
     private Node<E> front;
     private Node<E> rear;
@@ -5,16 +6,15 @@ public class MyQueue<E> implements QueueInterface<E> {
 
     public void enQueue (E item) {
         if (front == null) {
-            front = new Node<E> (item);
+            front = new Node (item);
             rear = front;
         } else {
             Node<E> tmp = front;
             while (tmp.getNext()!= null) {
                 tmp = tmp.getNext();
             }
-            Node<E> newNode = new Node<E>(item);
-            tmp.setNext(newNode);
-            rear = newNode;
+            tmp.setNext(new Node(item));
+            rear = rear.getNext();
         }
         numNode++;
     }

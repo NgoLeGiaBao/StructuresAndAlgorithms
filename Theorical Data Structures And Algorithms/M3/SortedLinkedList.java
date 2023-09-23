@@ -20,27 +20,14 @@ public class SortedLinkedList {
         }
     }
     public void add (int data) {
-        if (head == null) {
+        if (head == null || data < head.getData()) {
             head = new Node (data, head);
         } else {
-            if (data < head.getData()) {
-                head = new Node (data, head);
-            } else {
-                Node prev = head;
-                Node tmp = head.getNext();
-                while (tmp != null) {
-                    if (data < tmp.getData()) {
-                        prev.setNext(new Node(data, tmp));
-                        numNode++;
-                        return ;
-                    }
-                    prev = tmp;
-                    tmp = tmp.getNext();
-                }
-                if (prev.getData() <= data) {
-                    prev.setNext(new Node(data));
-                }
+            Node tmp = head;
+            while (tmp.getNext() != null && tmp.getNext().getData() < data) {
+                tmp = tmp.getNext();
             }
+            tmp.setNext(new Node(data, tmp.getNext()));
         }
         numNode++;
     }

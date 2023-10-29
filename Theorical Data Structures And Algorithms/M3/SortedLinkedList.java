@@ -24,7 +24,7 @@ public class SortedLinkedList {
             head = new Node (data, head);
         } else {
             Node tmp = head;
-            while (tmp.getNext() != null && tmp.getNext().getData() < data) {
+            while (tmp.getNext() != null && tmp.getNext().getData() < data ) {
                 tmp = tmp.getNext();
             }
             tmp.setNext(new Node(data, tmp.getNext()));
@@ -34,25 +34,22 @@ public class SortedLinkedList {
     public boolean remove (int data) {
         if (head == null) {
             return false;
-        } else {
-            if (head.getData() == data) {
-                head = head.getNext();
-                numNode--;
-                return true;
-            } else {
-                Node prev = head;
-                Node tmp = head.getNext();
-                while (tmp != null) {
-                    if (tmp.getData() == data) {
-                        prev.setNext(tmp.getNext());
-                        numNode--;
-                        return true;
-                    }
-                    prev = tmp;
-                    tmp = tmp.getNext();
-                }
-                return false;
-            }
         }
+        if (head.getData() == data) {
+            head = head.getNext();
+            numNode--;
+            return true;
+        }
+        Node tmp = head;
+        while (tmp.getNext() != null && tmp.getNext().getData() != data) {
+            tmp = tmp.getNext();
+        }
+        Node del = tmp.getNext();
+        if (del != null) {
+            tmp.setNext(del.getNext());
+            numNode--;
+            return true;
+        }
+        return false;
     }
 }
